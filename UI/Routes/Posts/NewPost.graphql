@@ -1,0 +1,6 @@
+mutation NewPost($input: NewPostInput!) {
+  newPost(input: $input) {
+    title
+    body
+  }
+}

@@ -3,6 +3,16 @@ import { https } from 'firebase-functions';
 import { readJSON } from 'fs-extra';
 import { config } from 'firebase-functions';
 import { apiServer } from './API';
+import admin from 'firebase-admin';
+import * as firestorm from 'firebase-firestorm';
+
+admin.initializeApp({
+  credential: admin.credential.cert(require('./serviceAccountKey.json'))
+});
+
+const firestore = admin.firestore();
+
+firestorm.initialize(firestore);
 
 const loadServer = async (): Promise<any> => {
   const manifest = await readJSON(`functions/parcel-manifest.json`);

@@ -1,9 +1,9 @@
-// API/HelloWorldResolver.ts
+// functions/API/HelloWorld/HelloWorld.resolver.ts
 import 'reflect-metadata'
 import { Resolver, Query, Arg, Mutation } from 'type-graphql'
 
 @Resolver()
-export class HelloWorldResolver {
+export default class HelloWorldResolver {
   @Query((type) => String)
   public async helloWorld(): Promise<string> {
     return 'Hello World'
