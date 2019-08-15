@@ -1,14 +1,14 @@
 // functions/Models/Model.ts
-import { Entity, rootCollection, field,  } from 'firebase-firestorm';
+import { Entity, rootCollection, field } from 'firebase-firestorm';
 import { ObjectType, Field, InputType } from 'type-graphql';
- 
+
 @rootCollection({
-  name: 'Posts',
+  name: 'Posts'
 })
 export default class Post extends Entity {
   @field({ name: 'title' })
   title!: string;
- 
+
   @field({ name: 'body' })
   body!: string;
 }
@@ -20,7 +20,6 @@ export class PostItem {
 
   @Field()
   body: string;
-
 }
 
 @InputType()

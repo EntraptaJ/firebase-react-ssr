@@ -1,7 +1,6 @@
 // functions/index.ts
-import { https } from 'firebase-functions';
+import { https, config } from 'firebase-functions';
 import { readJSON } from 'fs-extra';
-import { config } from 'firebase-functions';
 import { apiServer } from './API';
 import admin from 'firebase-admin';
 import * as firestorm from 'firebase-firestorm';

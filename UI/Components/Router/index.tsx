@@ -4,7 +4,7 @@ import { AppRoute } from './types';
 import { Switch, Route as RouteComponent } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes';
 
-const HandleRoutes = (routes: AppRoute[], parent: string = '/'): ReactElement[] => {
+const HandleRoutes = (routes: AppRoute[], parent = '/'): ReactElement[] => {
   let Routes: ReactElement[] = [];
   for (const Route of routes) {
     if (Route.children) {

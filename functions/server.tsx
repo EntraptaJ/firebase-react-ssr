@@ -42,7 +42,7 @@ export async function uiServer(req: Request, res: Response, config: Config): Pro
   const coreApp = (
     <ConfigProvider {...config}>
       <ApolloProvider client={client}>
-          <App />
+        <App />
       </ApolloProvider>
     </ConfigProvider>
   );

@@ -18,7 +18,7 @@ interface AppHeadProps {
   sources: Source[];
 }
 
-const AppName = 'AppName'
+const AppName = 'AppName';
 
 export function AppHead({ sources }: AppHeadProps): React.ReactElement {
   return (
