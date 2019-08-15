@@ -9,6 +9,7 @@ const AppCSS = `
   flex-direction: column;
 }
 html, body, #app {
+  margin: 0;
   height: 100%;
   width: 100%;
 }`;
@@ -16,6 +17,8 @@ html, body, #app {
 interface AppHeadProps {
   sources: Source[];
 }
+
+const AppName = 'AppName'
 
 export function AppHead({ sources }: AppHeadProps): React.ReactElement {
   return (
@@ -25,12 +28,12 @@ export function AppHead({ sources }: AppHeadProps): React.ReactElement {
       <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
       <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
       <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#2196f3' />
-      <meta name='apple-mobile-web-app-title' content='BIND Management' />
-      <meta name='application-name' content='BIND Management' />
+      <meta name='apple-mobile-web-app-title' content={AppName} />
+      <meta name='application-name' content={AppName} />
       <meta name='msapplication-TileColor' content='#da532c' />
       <meta name='theme-color' content='#2196f3' />
       <meta charSet='UTF-8' />
-      <title>BIND Management</title>
+      <title>{AppName}</title>
       <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport' />
       {sources && sources.map(({ src, type }, index) => <link rel='preload' href={src} as={type} key={index} />)}
       {sources &&

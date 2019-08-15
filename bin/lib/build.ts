@@ -50,5 +50,5 @@ export const build = async (watch: boolean = false): Promise<void> => {
   }
 
   await writeJSON('dist/CSS.json', CSS);
-  // await generateIcons('icons/main.webp');
+  await generateIcons('icons/main.png');
 }

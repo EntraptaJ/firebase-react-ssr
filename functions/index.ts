@@ -2,7 +2,6 @@
 import { https } from 'firebase-functions';
 import { readJSON } from 'fs-extra';
 import { config } from 'firebase-functions';
-import { Config } from 'UI/Components/Providers/ConfigProvider';
 import { apiServer } from './API';
 
 const loadServer = async (): Promise<any> => {

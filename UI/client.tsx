@@ -6,6 +6,13 @@ import { ConfigProvider } from 'UI/Components/Providers/ConfigProvider';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from './Components/Providers/ApolloProvider';
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async function() {
+    const worker = await navigator.serviceWorker.register('/service-worker.ts', { scope: '/' });
+    console.log('SW registered: ', worker);
+  });
+}
+
 async function render(renderFunction: Renderer, App: typeof AppComponent) {
   renderFunction(
     <BrowserRouter>
@@ -19,7 +26,7 @@ async function render(renderFunction: Renderer, App: typeof AppComponent) {
   );
 }
 
-render(ReactDOM.hydrate, AppComponent);
+preloadReady().then(() => render(ReactDOM.hydrate, AppComponent));
 
 const hot = (module as any).hot;
 if (hot && hot.accept) {

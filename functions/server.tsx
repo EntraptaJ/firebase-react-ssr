@@ -31,6 +31,8 @@ export async function uiServer(req: Request, res: Response, config: Config): Pro
     { type: 'style', src: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
   ];
 
+  const modules: string[] = [];
+
   await preloadAll();
 
   const client = initApollo({ baseUrl: config.baseUrl });
@@ -40,7 +42,9 @@ export async function uiServer(req: Request, res: Response, config: Config): Pro
   const coreApp = (
     <ConfigProvider {...config}>
       <ApolloProvider client={client}>
-        <App />
+        <Capture report={moduleName => modules.push(moduleName)}>
+          <App />
+        </Capture>
       </ApolloProvider>
     </ConfigProvider>
   );
@@ -52,6 +56,12 @@ export async function uiServer(req: Request, res: Response, config: Config): Pro
   );
 
   await getDataFromTree(MainApp);
+
+  modules.map(moduleName =>
+    Object.entries(parcelManifest)
+      .filter(([a, b]) => a.replace('../node_modules/', '') === moduleName || cssManifest[moduleName] === b)
+      .map(([, file]) => sources.push({ src: file, type: file.includes('.js') ? 'script' : 'style' }))
+  );
 
   const headStream = renderAppHeadStream({ sources });
 
