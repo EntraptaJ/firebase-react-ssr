@@ -36,6 +36,7 @@ export const build = async (watch: boolean = false): Promise<void> => {
     target: 'node',
     contentHash: true,
     sourceMaps: false,
+    minify: false,
     cache: false
   });
 
@@ -51,4 +52,4 @@ export const build = async (watch: boolean = false): Promise<void> => {
 
   await writeJSON('dist/CSS.json', CSS);
   await generateIcons('icons/main.png');
-}
+};

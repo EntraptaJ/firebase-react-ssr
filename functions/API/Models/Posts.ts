@@ -1,5 +1,5 @@
 // functions/Models/Model.ts
-import { Entity, rootCollection, field } from 'firebase-firestorm';
+import { Entity, rootCollection, field,  } from 'firebase-firestorm';
 import { ObjectType, Field, InputType } from 'type-graphql';
  
 @rootCollection({
