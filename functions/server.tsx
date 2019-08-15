@@ -42,9 +42,7 @@ export async function uiServer(req: Request, res: Response, config: Config): Pro
   const coreApp = (
     <ConfigProvider {...config}>
       <ApolloProvider client={client}>
-        <Capture report={moduleName => modules.push(moduleName)}>
           <App />
-        </Capture>
       </ApolloProvider>
     </ConfigProvider>
   );
@@ -55,7 +53,7 @@ export async function uiServer(req: Request, res: Response, config: Config): Pro
     </StaticRouter>
   );
 
-  await getDataFromTree(MainApp);
+  await getDataFromTree(<Capture report={moduleName => modules.push(moduleName)}>{MainApp}</Capture>);
 
   modules.map(moduleName =>
     Object.entries(parcelManifest)
